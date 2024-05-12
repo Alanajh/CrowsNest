@@ -9,14 +9,23 @@
 <body>
 
 <div class="container">
-  <ul class="nav bg-info">
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/">HOME</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/members">MEMBERS</a>
-    </li>
-  </ul>
+    <div class="card text-white bg-warning mb-3">
+        <div class="card-body">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="addon-wrapping">@=</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <div class="input-group flex-nowrap pt-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">@=</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
+            
+            </div>
+        </div>
+      </div>
 
   {% block content %}
   {% endblock %}
