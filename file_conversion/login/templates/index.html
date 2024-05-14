@@ -5,25 +5,28 @@
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+  {% load static %}
 </head>
 <body>
 
 <div class="container">
-    <div class="card text-white bg-warning mb-3">
+    <div class="card text-white bg-warning mb-2 mx-auto p-2 m-5" style="width:400px; height:600px">
+        <div class="card-header mx-auto">Login to the Crows Nest</div>
+        <img class="card-img-top" src="{% static 'image_2.png' %}" alt="Card image">
         <div class="card-body">
             <div class="input-group flex-nowrap">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="addon-wrapping">@=</span>
+                  <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
                 </div>
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
             <div class="input-group flex-nowrap pt-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">@=</span>
+                    <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
                 </div>
                 <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
-            
             </div>
+            <div class="card-footer">Forgot password</div>    
         </div>
       </div>
 
