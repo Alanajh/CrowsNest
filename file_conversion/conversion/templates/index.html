@@ -5,42 +5,66 @@
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
-  {% load static %}
+  {% load static %} 
 </head>
-<body>
-
-<div class="container">
-    <div class="card text-white bg-warning mb-2 mx-auto p-2 m-5" style="width:400px; height:600px">
-        <div class="card-header mx-auto">Login to the Crows Nest</div>
-        <img class="card-img-top" src="{% static 'image_2.png' %}" alt="Card image">
-        <div class="card-body">
-            <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
+<body> 
+    
+<div class="container bg-success">
+  <!-- The Modal -->
+  <div class="modal in" id="loginModal" role="dialog" style="display:block">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header bg-warning text-center">
+          <h4 class="modal-title w-100">Login to the Crows Nest</h4>
+          <!--<button type="button" class="btn-close" data-bs-dismiss="modal"></button>-->
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body bg-warning">
+            <div class="row no-gutters">
+                <div class="col-12 m-0 p-0">
+                    <img class="card-img-top" src="{% static 'image_2.png' %}" alt="Card image">
                 </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
-            <div class="input-group flex-nowrap pt-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
+            <div class="row no-gutters">
+                <div class="col-12 m-0 p-0">
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap pt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
+                    </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
             </div>
-            <div class="card-footer text-center border l-0 t-3 r-0">
-                <div class="row no-gutters">
-                    <div class="col-5 m-0 p-0">
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer bg-warning">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 float-sm-start m-0 p-0">
                         <p><small><a href="#">forgot username</a></br><a href="#">forgot password</a></small></p>
                     </div>
-                    <div class="col-4"></div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-dark">
-                            Login
-                        </button>
+                    
+                    <div class="col-4 text-center">
+                        <!-- Must update to not just dismiss the modal, but check login data or show an error s-->
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Login</button>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
+  
       </div>
+    </div>
+  </div>
 
   {% block content %}
   {% endblock %}
