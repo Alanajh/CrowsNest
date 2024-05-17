@@ -6,6 +6,9 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
   {% load static %} 
+  <script>
+    $('#loginModal').modal(options)
+  </script>
 </head>
 <body> 
     
@@ -22,6 +25,15 @@
         </div>
   
         <!-- Modal body -->
+        <table border='1'>
+        {% for x in userAccounts %}
+        <tr>
+          <td>{{ x.username }}</td>
+            <td>{{ x.password }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p> TRY ME </p>
         <div class="modal-body bg-warning">
             <div class="row no-gutters">
                 <div class="col-12 m-0 p-0">
@@ -51,12 +63,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-8 float-sm-start m-0 p-0">
-                        <p><small><a href="#">forgot username</a></br><a href="#">forgot password</a></small></p>
+                        <p><small><a href="#">forgot username</a></br>
+                            <a href="#">forgot password</a></br>
+                            <a href="#">create account</a></small></p>
                     </div>
-                    
                     <div class="col-4 text-center">
                         <!-- Must update to not just dismiss the modal, but check login data or show an error s-->
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Login</button>
+                        <button type="button" class="btn btn-dark"  id="login" data-bs-dismiss="modal" onclick="validation()">Login</button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -69,5 +83,11 @@
   {% block content %}
   {% endblock %}
 </div>
+<script>
+    function validation() {
+      document.getElementById("login").innerHTML = "Hello World";
+      
+    }
+</script>
 </body>
 </html>
