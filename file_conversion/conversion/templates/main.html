@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{% block title %}{% endblock %}</title>
-  {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
-  {% load static %}
-</head>
-<body>
-<div>
-    <h1>MAIN PAGE</h1>
-  {% block content %}
-  {% endblock %}
- </div>
-</body>
-</html>
+
+{% extends 'conversion/index.html' %}
+
+{% block content %}
+  {% if searched %}
+    <h1> YOU SEARCHED FOR: {{searched}} </h1>
+  {% else %}
+    <h3> Did you forget something? </h3>
+  {% endif %}
+{% endblock %}

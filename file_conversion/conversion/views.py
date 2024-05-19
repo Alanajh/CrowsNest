@@ -15,5 +15,11 @@ def logins(request):
     return HttpResponse(template.render(context, request))
 
 def valid_user(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
     
-    return render(request, 'conversion/index.html', {})
+    return render(request, 'search_users.html', {'searched':searched})
+
+def search_users(request):
+  
+    return render(request, 'templates/search_users.html', {})
