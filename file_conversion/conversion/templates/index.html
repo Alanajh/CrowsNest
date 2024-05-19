@@ -24,7 +24,7 @@
           <!--<button type="button" class="btn-close" data-bs-dismiss="modal"></button>-->
         </div>
   
-        <!-- Modal body -->
+        <!-- Modal body 
         <table border='1'>
         {% for x in userAccounts %}
         <tr>
@@ -32,8 +32,7 @@
             <td>{{ x.password }}</td>
         </tr>
         {% endfor %}
-        </table>
-        <p> TRY ME </p>
+        </table>-->
         <div class="modal-body bg-warning">
             <div class="row no-gutters">
                 <div class="col-12 m-0 p-0">
@@ -42,18 +41,16 @@
             </div>
             <div class="row no-gutters">
                 <div class="col-12 m-0 p-0">
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>
-                    <div class="input-group flex-nowrap pt-4">
-                        <div class="input-group-prepend">
+                    <form class="d-flex" method="POST">
+                        <div>
+                            <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
                             <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
-                    </div>
+                        <div>
+                            <input type="text" class="form-control" id="user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" id="pswd" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -75,19 +72,24 @@
                 </div>
             </div>
         </div>
-  
       </div>
     </div>
+<script>
+    function validation() {
+  
+        document.getElementById("login").innerHTML = "Hello World";
+        const user = document.getElementById("user").value
+        const pswd = document.getElementById("pswd").value
+
+        console.log(typeof(user))
+        console.log(typeof(pswd))
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+</script>
   </div>
 
   {% block content %}
   {% endblock %}
 </div>
-<script>
-    function validation() {
-      document.getElementById("login").innerHTML = "Hello World";
-      
-    }
-</script>
+
 </body>
-</html>
+</html>                                                                                                                                                 
