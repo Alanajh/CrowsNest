@@ -1,0 +1,10 @@
+{% block content %}
+
+<h5> Account List </h5>
+
+{% for i in acct_list %}
+    <li>{{ i.username }}: {{i.password}}</li>
+
+{% endfor %}
+
+{% endblock %}

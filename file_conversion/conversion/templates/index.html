@@ -12,7 +12,7 @@
 </head>
 <body> 
     
-<div class="container bg-success">
+<div class="container">
     <!-- The Modal -->
     <div class="modal in" id="loginModal" role="dialog" style="display:block">
         <div class="modal-dialog modal-sm">
@@ -31,16 +31,16 @@
                     </div>
                 </div>
                 <div class="row no-gutters">
-                    <div class="col-12 m-0 p-0">
-                        <form class="d-flex" method="POST" action="{% url 'search_users' %}">
+                    <div class="col-12">
+                        <form class="d-flex" method="POST" action="{% url 'search-users' %}">
                             {% csrf_token %}
                             <div>
-                                <span class="input-group-text" id="addon-wrapping">¯\_(ツ)_/¯</span>
+                                <span class="input-group-text mb-1" id="addon-wrapping">¯\_(ツ)_/¯</span>
                                 <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
                             </div>
                             <div>
-                                <input type="search" class="form-control" id="user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                <input type="search" class="form-control" id="pswd" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
+                                <input type="search" class="form-control mb-1" id="user" name="user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input type="search" class="form-control" id="pswd" name="pswd" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
                             <div>
                             <div class="d-flex flex-row justify-content-end pt-2">
                                 <button type="submit" class="btn btn-dark"  id="login">Login</button>
@@ -53,27 +53,18 @@
             <!-- Modal footer -->
             <div class="modal-footer bg-warning ">
                 <div>
-                    <p><small>
-                        <a href="#">forgot username</a></br>
-                        <a href="#">forgot password</a></br>
-                        <a href="#">create account</a>
-                    </small></p>
+                    <form class="d-flex" method="POST" action="{% url 'create-account' %}">
+                        {% csrf_token %}
+                        <p><small>
+                            <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">forgot username</span></button></br>
+                            <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">forgot password</span></button></br>
+                            <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">create account</span></button>
+                        </small></p>
+                    </form>
                 </div>
             </div> <!-- End of modal footer -->
         </div> <!-- End of modal content -->
         </div> <!-- End of modal-dialog -->
-
-        <script>
-            function validation() {
-        
-                document.getElementById("login").innerHTML = "Hello World";
-                const user = document.getElementById("user").value
-                const pswd = document.getElementById("pswd").value
-
-                console.log(typeof(user))
-                console.log(typeof(pswd))
-            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        </script>
     </div> <!-- End of modal -->
 
     {% block content %}

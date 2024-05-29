@@ -1,6 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
+from .models import User
+from .forms import UserForm
 from .models import User
 
 def logins(request):
@@ -20,6 +22,29 @@ def valid_user(request):
     
     return render(request, 'search_users.html', {'searched':searched})
 
+def accounts_list(request):
+    acct_list = User.objects.all()
+    return render(request,  'all_accounts.html', {'acct_list': acct_list})
+
+def create_account(request):
+    submitted = False
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/create_account?submitted=True')
+    else:
+        form = UserForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'create_account.html', {'form': UserForm, 'submitted': submitted})
+        #  return render(request, 'create_account.html', {'form': UserForm, 'submitted': submitted})
+
 def search_users(request):
-  
-    return render(request, 'templates/search_users.html', {})
+    if request.method == "POST":
+        user = request.POST['user']
+        pswd = request.POST['pswd']
+        account_name = User.objects.filter(username__contains=user)
+        account_pswd = User.objects.filter(password__contains=pswd)
+
+        return render(request, 'search_users.html', {"user":user, "account":account_name, "pswd":account_pswd})

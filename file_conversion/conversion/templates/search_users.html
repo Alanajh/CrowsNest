@@ -1,7 +1,20 @@
-{% extends 'conversion/index.html' %}
+
 
 {% block content %}
-
-  <h1> YOU SEARCHED FOR:  </h1>
-
+{% if user %}
+  {% if pswd %}
+    <h1> Please enter your password </h1>
+  {% else %}
+    <h1> YOU SEARCHED FOR: {{user}} </h1>
+    
+    </br>
+    <h2> Account name: {{account_name}} </h2>
+  {% for i in account%}
+    <span>{{i.username}}:{{i.password}}</span>
+    </br>
+  {% endfor %}
+  {% endif %}
+{% else %}
+  <h3> Please enter your username </h3>
+{% endif %}
 {% endblock %}
