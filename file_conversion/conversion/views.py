@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render
 from .models import User
-from .forms import UserForm
+from .forms import UserForm, InputForm
 from .models import User
 
 def logins(request):
@@ -44,7 +44,12 @@ def search_users(request):
     if request.method == "POST":
         user = request.POST['user']
         pswd = request.POST['pswd']
+        # Returned results for username and password
         account_name = User.objects.filter(username__contains=user)
         account_pswd = User.objects.filter(password__contains=pswd)
 
-        return render(request, 'search_users.html', {"user":user, "account":account_name, "pswd":account_pswd})
+        return render(request, 'search_users.html', {"user":user, "pswd": pswd, 
+            'account_name': account_name, 'account_pswd': account_pswd})
+    
+def main(request):
+    return render(request, 'main.html', {'form': InputForm})

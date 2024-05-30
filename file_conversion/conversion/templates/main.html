@@ -1,10 +1,13 @@
-
-{% extends 'conversion/index.html' %}
-
 {% block content %}
-  {% if searched %}
-    <h1> YOU SEARCHED FOR: {{searched}} </h1>
-  {% else %}
-    <h3> Did you forget something? </h3>
-  {% endif %}
+
+<h5> Crows Nest </h5>
+
+<form action='' method=POST>
+    {% csrf_token %}
+    <!-- Render Django form as a paragraph -->
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-dark"/>
+    
+</form>
+
 {% endblock %}

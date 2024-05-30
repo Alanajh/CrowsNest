@@ -1,9 +1,20 @@
 
 
 {% block content %}
+<h1> You enter your password {{user}} - {{pswd}}</h1>
+{% if user %}
+  {% for i in account_name %}
+    <span>{{i.username}}:{{i.password}}</span>
+    </br>
+  {% endfor %}
+{% else %}
+
+{% endif %}
+
+<!--
 {% if user %}
   {% if pswd %}
-    <h1> Please enter your password </h1>
+    
   {% else %}
     <h1> YOU SEARCHED FOR: {{user}} </h1>
     
@@ -17,4 +28,5 @@
 {% else %}
   <h3> Please enter your username </h3>
 {% endif %}
+  -->
 {% endblock %}

@@ -34,6 +34,10 @@
                     <div class="col-12">
                         {% if submitted %}
                             <h5> Account created successfully.</h5>
+                            <form action="{% url 'acct-list' %}" method=POST>
+                                {% csrf_token %}
+                                <input type="submit" value="REMOVE ME" class="btn btn-dark"/>
+                            </form>
                         {% else %}
                             <form action='' method=POST>
                                 {% csrf_token %}
