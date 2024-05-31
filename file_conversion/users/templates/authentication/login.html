@@ -14,6 +14,11 @@
 <body> 
     
 <div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
     <!-- The Modal -->
     <div class="modal in" id="loginModal" role="dialog" style="display:block">
         <div class="modal-dialog modal-sm">

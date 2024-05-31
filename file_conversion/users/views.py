@@ -13,7 +13,7 @@ def login_user(request):
             return redirect('main')
         else:
             # Login was not valid message
-            messages.info(request, ("Retry login"))
-            return redirect('ogin.html')
+            messages.success(request, ("Retry login"))
+            return redirect('login')
     else:
         return render(request, 'authentication/login.html', {})
