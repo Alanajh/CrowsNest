@@ -14,11 +14,6 @@
 <body> 
     
 <div class="container">
-    {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    {% endif %}
     <!-- The Modal -->
     <div class="modal in" id="loginModal" role="dialog" style="display:block">
         <div class="modal-dialog modal-sm">
@@ -26,7 +21,7 @@
     
             <!-- Modal Header -->
             <div class="modal-header bg-warning text-center">
-                <h4 class="modal-title w-100">Login to the Crows Nest</h4>
+                <h4 class="modal-title w-100">The Crows Nest</h4>
             </div> <!-- End of modal header -->
     
             <!-- Modal body -->
@@ -69,6 +64,12 @@
                     </form>
                 </div>
             </div> <!-- End of modal footer -->
+            <!-- Login error message --> 
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 style='text-align:center; color: red;'> {{ message }} </h3>
+                {% endfor %}
+            {% endif %}
         </div> <!-- End of modal content -->
         </div> <!-- End of modal-dialog -->
     </div> <!-- End of modal -->

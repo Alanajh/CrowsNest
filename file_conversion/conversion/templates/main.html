@@ -1,15 +1,22 @@
 {% block content %}
 
-<h5> Crows Nest </h5>
-<div class="alert alert-warning" role="alert">
-    This is a warning alert—check it out!
-</div>
-<form action='' method=POST>
-    {% csrf_token %}
-    <!-- Render Django form as a paragraph -->
-    {{ form.as_p }}
-    <input type="submit" value="Submit" class="btn btn-dark"/>
-    
-</form>
+<h2> Crows Nest </h2>
 
+{% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method=POST>
+        {% csrf_token %}
+        <h2> Hello {{ user }} </h2>
+        <!--
+
+            ################################3
+
+        -->
+        <input type="submit" value="Logout" class="btn btn-secondary"/>
+    </form>
+{% else %}
+    <form action="{% url 'logout' %}" method=POST>
+    {% csrf_token %}
+        <input type="submit" value="Login" class="btn btn-secondary"/> 
+    </form>
+{% endif %}
 {% endblock %}

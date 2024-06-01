@@ -53,3 +53,4 @@ def search_users(request):
     
 def main(request):
     return render(request, 'main.html', {'form': InputForm})
+
