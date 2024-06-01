@@ -14,9 +14,6 @@
         <input type="submit" value="Logout" class="btn btn-secondary"/>
     </form>
 {% else %}
-    <form action="{% url 'logout' %}" method=POST>
-    {% csrf_token %}
-        <input type="submit" value="Login" class="btn btn-secondary"/> 
-    </form>
+   <h1>Login to perform actions </h1>
 {% endif %}
 {% endblock %}

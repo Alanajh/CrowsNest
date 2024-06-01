@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 def login_user(request):
     # Verify the form is filled out
@@ -22,3 +23,6 @@ def logout_user(request):
     logout(request)
     messages.success(request, (" Logged out "))
     return redirect('login')
+
+def create_user(request):
+    return render(request, 'authenticate/create_user.html')
