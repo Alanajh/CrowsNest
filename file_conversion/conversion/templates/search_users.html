@@ -1,8 +1,13 @@
 
 
 {% block content %}
-<h1> Select your file</h1>
-
+<h1> You enter your password {{user}} - {{pswd}}</h1>
+{% if user %}
+  {% for i in account_name %}
+    <span>{{i.username}}:{{i.password}}</span>
+    </br>
+  {% endfor %}
+{% else %}
 
 {% endif %}
 

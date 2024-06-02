@@ -25,4 +25,17 @@ def logout_user(request):
     return redirect('login')
 
 def create_user(request):
-    return render(request, 'authenticate/create_user.html')
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, ("User created"))
+            return redirect('main')
+    else:
+        form = UserCreationForm()       
+    return render(request, 'authentication/create_user.html', 
+                    {'form':form})

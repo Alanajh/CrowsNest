@@ -3,14 +3,9 @@
 <h2> Crows Nest </h2>
 
 {% if user.is_authenticated %}
+    <h2> Hello {{ user }} </h2>
     <form action="{% url 'logout' %}" method=POST>
         {% csrf_token %}
-        <h2> Hello {{ user }} </h2>
-        <!--
-
-            ################################3
-
-        -->
         <input type="submit" value="Logout" class="btn btn-secondary"/>
     </form>
 {% else %}
