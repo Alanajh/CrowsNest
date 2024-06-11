@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Create Account{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% load static %} 
+  <script>
+    $('#loginModal').modal(options)
+  </script>
+</head>
+<body> 
+    
+<div class="container bg-success">
+    <!-- The Modal -->
+    <div class="modal in" id="loginModal" role="dialog" style="display:block">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header bg-warning text-center">
+                <h4 class="modal-title w-100">Create an account</h4>
+            </div> <!-- End of modal header -->
+    
+            <!-- Modal body -->
+            <div class="modal-body bg-warning">
+                <div class="row">
+                    <div class="col-12 m-0 p-0">
+                        <img class="card-img-top" src="{% static 'image_2.png' %}" alt="Card image">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {% if submitted %}
+                            <h5> Account created successfully.</h5>
+                            <form action="{% url 'acct-list' %}" method=POST>
+                                {% csrf_token %}
+                                <input type="submit" value="REMOVE ME" class="btn btn-dark"/>
+                            </form>
+                        {% else %}
+                            <form action='' method=POST>
+                                {% csrf_token %}
+                                <!-- Render Django form as a paragraph -->
+                                {{ form.as_p }}
+                                <input type="submit" value="Create Account" class="btn btn-dark" id="create_acct"/>
+                                
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div> <!-- End of modal body -->
+        </div>
+            <!-- Modal footer -->
+            <div class="modal-footer bg-warning ">
+                <form class="d-flex pt-2" method="POST" action="">
+                    {% csrf_token %}
+                    <p><small>
+                        <button type="submit" class="btn btn-link p-0"  id="create-acct"></button></br>
+                        <button type="submit" class="btn btn-link p-0"  id="create-acct"></button></br>
+                        <button type="submit" class="btn btn-link p-0"  id="create-acct"></button>
+                    </small></p>
+                </form>
+            </div> <!-- End of modal footer -->
+        </div> <!-- End of modal content -->
+        </div> <!-- End of modal-dialog -->
+    </div> <!-- End of modal -->
+
+    {% block content %}
+    {% endblock %}
+</div> <!-- End of container -->
+
+</body>
+</html>                                                                                                                                                 

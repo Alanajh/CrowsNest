@@ -1,0 +1,17 @@
+
+{% block content %}
+    <h1> Create Account </h1>
+    {% if form.errors %}
+    <br/>
+        <form method="POST" action="{% url 'create-user' %}">
+            {% csrf_token %}
+            <!-- Add p tags to the form-->
+            {{ form.as_p }}
+            <br/><br/>
+            <input type="Submit" value="Login" class="btn btn-secondary"/>
+        </form>
+    {% else %}
+        <p> There was an error with your form </p>
+    {% endif %}
+{% endblock %}
+                                                                                                                                            

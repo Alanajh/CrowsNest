@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}Login{% endblock %}</title>
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
@@ -20,7 +21,7 @@
     
             <!-- Modal Header -->
             <div class="modal-header bg-warning text-center">
-                <h4 class="modal-title w-100">XXXThe Crows Nest</h4>
+                <h4 class="modal-title w-100">USER The Crows Nest</h4>
             </div> <!-- End of modal header -->
     
             <!-- Modal body -->
@@ -32,18 +33,18 @@
                 </div>
                 <div class="row no-gutters">
                     <div class="col-12">
-                        <form class="d-flex" method="POST" action="{% url 'search-users' %}">
+                        <form class="d-flex" method="POST" action="">
                             {% csrf_token %}
                             <div>
                                 <span class="input-group-text mb-1" id="addon-wrapping">¯\_(ツ)_/¯</span>
                                 <span class="input-group-text" id="addon-wrapping">¯\_(""~)_/¯</span>
                             </div>
                             <div>
-                                <input type="search" class="form-control mb-1" id="user" name="user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                <input type="search" class="form-control" id="pswd" name="pswd" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
+                                <input type="text" class="form-control mb-1" id="user" name="user" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                                <input type="password" class="form-control" id="pswd" name="pswd" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">  
                             <div>
                             <div class="d-flex flex-row justify-content-end pt-2">
-                                <input type="submit" value="Login" class="btn btn-dark" id="create_acct"/>
+                                <input type="submit" value="Login" class="btn btn-dark"/>
                             <div>
                         </form>
                     </div>
@@ -53,16 +54,32 @@
             <!-- Modal footer -->
             <div class="modal-footer bg-warning ">
                 <div>
-                    <form class="d-flex" method="POST" action="{% url 'create-account' %}">
+                    <form class="d-flex" method="POST" action="">
                         {% csrf_token %}
                         <p><small>
                             <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">forgot username</span></button></br>
+                        </small></p>
+                    </form>
+                    <form class="d-flex" method="POST" action="">
+                        {% csrf_token %}
+                        <p><small>
                             <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">forgot password</span></button></br>
+                        </small></p>
+                    </form>
+                    <form class="d-flex" method="POST" action="{% url 'create-user' %}">
+                        {% csrf_token %}
+                        <p><small>
                             <button type="submit" class="btn btn-link p-0"  id="create-acct"><span style="font-size:smaller">create account</span></button>
                         </small></p>
                     </form>
                 </div>
             </div> <!-- End of modal footer -->
+            <!-- Login error message --> 
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 style='text-align:center; color: lightgrey;'> {{ message }} </h3>
+                {% endfor %}
+            {% endif %}
         </div> <!-- End of modal content -->
         </div> <!-- End of modal-dialog -->
     </div> <!-- End of modal -->

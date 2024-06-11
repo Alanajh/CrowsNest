@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{% block title %}{% endblock %}</title>
-  {% load bootstrap5 %}
-  {% bootstrap_css %}
-  {% bootstrap_javascript %}
-  {% load static %}
-</head>
-<body>
-<div>
-    <h1>MAIN PAGE</h1>
-  {% block content %}
-  {% endblock %}
- </div>
-</body>
-</html>
+{% block content %}
+
+<h2> Crows Nest </h2>
+
+{% if user.is_authenticated %}
+    <h2> Hello {{ user }} </h2>
+    <form action="{% url 'logout' %}" method=POST>
+        {% csrf_token %}
+        <input type="submit" value="Logout" class="btn btn-secondary"/>
+    </form>
+{% else %}
+   <h1>Login to perform actions </h1>
+{% endif %}
+{% endblock %}

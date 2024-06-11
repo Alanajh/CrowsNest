@@ -1,0 +1,16 @@
+{% block content %}
+
+<h5> Account List </h5>
+
+<form action="{% url 'conversion' %}" method=POST>
+    {% csrf_token %}
+    <!-- Render Django form as a paragraph -->
+    <input type="submit" value="Login" class="btn btn-dark" id="create_acct"/>
+    
+</form>
+{% for i in acct_list %}
+    <li>{{ i.username }}: {{i.password}}</li>
+
+{% endfor %}
+
+{% endblock %}
