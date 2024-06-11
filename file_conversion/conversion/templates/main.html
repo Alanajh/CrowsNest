@@ -1,4 +1,10 @@
+
+
 {% block content %}
+
+{% load bootstrap %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 <h2> Crows Nest </h2>
 
@@ -6,6 +12,12 @@
     <h2> Hello {{ user }} </h2>
     <form action="{% url 'logout' %}" method=POST>
         {% csrf_token %}
+
+        <!--
+                THIS IS WHERE THE MAIN CONVERSION GOES
+        
+        -->
+
         <input type="submit" value="Logout" class="btn btn-secondary"/>
     </form>
 {% else %}
