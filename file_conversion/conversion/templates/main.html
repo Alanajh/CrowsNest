@@ -1,25 +1,33 @@
-
-
-{% block content %}
-
-{% load bootstrap %}
+{% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-<h2> Crows Nest </h2>
+{% block content %}
 
 {% if user.is_authenticated %}
-    <h2> Hello {{ user }} </h2>
-    <form action="{% url 'logout' %}" method=POST>
-        {% csrf_token %}
+    <div class="container">
+        <h2 class="text-center m-2"> Crows Nest </h2>
+        <h2> Hello {{ user }} </h2>
+        </br>
+        <form action="{% url 'logout' %}" method=POST>
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                </div>
+            </div>
 
-        <!--
-                THIS IS WHERE THE MAIN CONVERSION GOES
-        
-        -->
-
-        <input type="submit" value="Logout" class="btn btn-secondary"/>
-    </form>
+            <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Group comment key</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <input type="submit" value="Logout" class="btn btn-secondary"/>
+        </form>
+    </div>
 {% else %}
    <h1>Login to perform actions </h1>
 {% endif %}
