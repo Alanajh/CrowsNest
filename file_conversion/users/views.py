@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
+#from django_pandas.io import read_frame
+import pandas as pd
 
 def login_user(request):
     # Verify the form is filled out
@@ -39,3 +42,11 @@ def create_user(request):
         form = UserCreationForm()       
     return render(request, 'authentication/create_user.html', 
                     {'form':form})
+
+def querySet_build(request):
+    df = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/political_parties.xls')
+    columns = range(1, df.shape[1] + 1) #int
+    rows = range(1, df.shape[0] + 1) #int
+    headers = df.columns
+
+    return render(request, 'main.html', {'columns': columns, 'rows': rows, 'headers': headers, 'df': df})

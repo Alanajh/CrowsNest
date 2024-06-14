@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'conversion',
     'bootstrap5',
+    'django_pandas',
     'users',
 ]
 

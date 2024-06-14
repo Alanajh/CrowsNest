@@ -9,24 +9,53 @@
         <h2 class="text-center m-2"> Crows Nest </h2>
         <h2> Hello {{ user }} </h2>
         </br>
-        <form action="{% url 'logout' %}" method=POST>
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                </div>
-            </div>
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'logout' %}" method=POST>
+                    {% csrf_token %}
+                    <div class="container-fluid"></div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"></div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        </div>
+                    </div>
 
-            <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Group comment key</span>
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Comment</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Comment column">
+                    </div>
+                    <div class="pt-3">
+                        <input type="submit" value="Logout" class="btn btn-secondary"/>
+                        <input type="button" value="Add to" class="btn btn-secondary" onclick="table_additions()"/>
+                    </div>
+                </form>
+                <form action="{% url 'querySet_build' %}" method=POST>
+                    {% csrf_token %}
+                    <input type="submit" value="Import" class="btn btn-secondary"/>
+                </form>
             </div>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <div class="col border border-info">
+                <div class="col">
+                    <div class="row">Row(s): {{rows}} </div>
+                    <div class="row">Column(s): {{columns}} </div>
+                    <h2>{{ headers }}</h2>
+                    {% for row in rows %}
+                        <h1>ROW: {{ row }}</h1>
+                        {% for col in columns %}
+                            <h3>{{ col }}</h3>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <script>
+                    function table_additions() {
+                        console.log("access");
+                    }
+                </script>
             </div>
-            <input type="submit" value="Logout" class="btn btn-secondary"/>
-        </form>
+        </div>
     </div>
 {% else %}
    <h1>Login to perform actions </h1>
