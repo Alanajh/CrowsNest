@@ -1,11 +1,52 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-<h1>Conversion HTML </h1>
-
+{% block content %}
 
 </br>
-<h4>
-    {% autoescape off %}
-        {{ k }}
-    {% endautoescape %}
-</h4>
 
+<div class="container">
+    <h1>Conversion HTML </h1>
+    <div class="row">
+        <div class="col-sm">
+        <form action="{% url 'logout' %}" method=POST>
+            {% csrf_token %}
+            <div class="container-fluid"></div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend"></div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                </div>
+            </div>
+        
+            <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Comment</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Comment column">
+            </div>
+            <div class="pt-3">
+                <input type="submit" value="Logout" class="btn btn-secondary"/>
+                <input type="button" value="Add to" class="btn btn-secondary" onclick="table_additions()"/>
+            </div>
+        </form>
+        <form action="{% url 'querySet_build' %}" method=POST>
+            {% csrf_token %}
+            <input type="submit" value="Import" class="btn btn-secondary"/>
+        </form>
+        </div>
+        <div class="col-sm">
+            <h4>
+                {% autoescape off %}
+                    {{ main_table }}
+                {% endautoescape %}
+            </h4>
+        </div>
+    </div>
+  </div>
+
+  
+  
+
+{% endblock %}

@@ -26,6 +26,7 @@ def accounts_list(request):
     acct_list = User.objects.all()
     return render(request,  'all_accounts.html', {'acct_list': acct_list})
 
+# Create a new user account
 def create_account(request):
     submitted = False
     if request.method == "POST":
@@ -40,6 +41,7 @@ def create_account(request):
     return render(request, 'create_account.html', {'form': UserForm, 'submitted': submitted})
         #  return render(request, 'create_account.html', {'form': UserForm, 'submitted': submitted})
 
+# Search all the usernames 
 def search_users(request):
     if request.method == "POST":
         user = request.POST['user']
@@ -50,38 +52,41 @@ def search_users(request):
 
         return render(request, 'search_users.html', {"user":user, "pswd": pswd, 
             'account_name': account_name, 'account_pswd': account_pswd})
+
+# View of the requested excel or csv document
+def conversion_chart(request):
+    action = True
+    if action == True:
+        df = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/political_parties.xls')
+        table_style = {
+        "selector": "th.col_heading",
+            "props": [
+                ('border-bottom', '1px solid black'),
+                ('font-weight', '5px'),
+                ('background-color', 'lightgrey')
+            ]
+        }
+        conversion_table = df.style.set_properties(
+            **{'font-size': '12pt', 
+            'font-family': 'Calibri',
+            'border-collapse': 'collapse',
+            'border-right': '1px solid black',
+            'padding': '3px'})\
+                .set_table_styles([table_style])
+        main_table = conversion_table.to_html()
+
+        return render(
+            request, 
+            'main.html', 
+            {'main_table': main_table})
+    else:
+        return HttpResponse(
+            'Here I come'
+        )
     
-def main(request):
-    return render(request, 'main.html', {'form': InputForm})
 
-def test(request):
-    df = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/political_parties.xls')
-   
-    l = list(df)
-    #h = list(df.columns.values)
-    table_style = {
-    # adjust the selectors if needed
-    "selector": "th.col_heading",
-        "props": [
-            ('border', '1px solid black'),
-            ('font-weight', '5px')
-        ]
-    }
-    myhtml = df.style.set_properties(
-        **{'font-size': '12pt', 
-           'font-family': 'Calibri',
-           'border-collapse': 'collapse',
-           #'border': '1px solid black',
-           'padding': '3px'})\
-            .set_table_styles([table_style])
-    k = myhtml.to_html()
+def querySet_build(request):
+    return HttpResponse(
+            'Here I come 2'
+        )
     
-    #return HttpResponse(template.render())
-    return render(
-        request, 
-        'conversion.html', 
-        {'k': k})
-
-
-
-#
