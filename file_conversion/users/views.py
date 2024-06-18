@@ -45,8 +45,18 @@ def create_user(request):
 
 def querySet_build(request):
     df = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/political_parties.xls')
+    df2 = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/state_capitals.xls')
     columns = range(1, df.shape[1] + 1) #int
     rows = range(1, df.shape[0] + 1) #int
     headers = df.columns
+    #print(list(df.columns))
+    df.set_axis(axis=1, labels=headers)
+    print(df)
+    # !st view
+    x = df.to_html()
+    y = df2.to_html()
+#
 
-    return render(request, 'main.html', {'columns': columns, 'rows': rows, 'headers': headers, 'df': df})
+    #return render(request, 'main.html', {'columns': columns, 
+    #    'rows': rows, 'headers': headers, 'df': df, 'x': x})
+    

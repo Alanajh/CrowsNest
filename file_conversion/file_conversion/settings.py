@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'conversion',
     'bootstrap5',
     'django_pandas',
+    'test',
     'users',
 ]
 

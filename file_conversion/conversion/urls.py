@@ -11,5 +11,6 @@ urlpatterns = [
     # Django users authentication
     path('users/', include('django.contrib.auth.urls')),
     path('users/', include('users.urls')),
+    path('file_conversion/', views.test, name='test'),
     
 ]

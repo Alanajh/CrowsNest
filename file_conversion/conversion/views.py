@@ -3,7 +3,7 @@ from django.template import loader
 from django.shortcuts import render
 from .models import User
 from .forms import UserForm, InputForm
-from .models import User
+import pandas as pd
 
 def logins(request):
     #template = loader.get_template('index.html')
@@ -54,3 +54,34 @@ def search_users(request):
 def main(request):
     return render(request, 'main.html', {'form': InputForm})
 
+def test(request):
+    df = pd.read_excel('C:/Users/Alana/Desktop/Progetti/CrowsNest/file_conversion/test_files/political_parties.xls')
+   
+    l = list(df)
+    #h = list(df.columns.values)
+    table_style = {
+    # adjust the selectors if needed
+    "selector": "th.col_heading",
+        "props": [
+            ('border', '1px solid black'),
+            ('font-weight', '5px')
+        ]
+    }
+    myhtml = df.style.set_properties(
+        **{'font-size': '12pt', 
+           'font-family': 'Calibri',
+           'border-collapse': 'collapse',
+           #'border': '1px solid black',
+           'padding': '3px'})\
+            .set_table_styles([table_style])
+    k = myhtml.to_html()
+    
+    #return HttpResponse(template.render())
+    return render(
+        request, 
+        'conversion.html', 
+        {'k': k})
+
+
+
+#
